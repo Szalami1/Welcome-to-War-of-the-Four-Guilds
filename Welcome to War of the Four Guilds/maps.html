@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Control</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e2e;
+            color: #ddd;
+            padding: 20px;
+            text-align: center;
+            background-image: url('images/map_background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: 3em;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            background-color: #2c2c54;
+            color: #fff;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #444;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #444;
+            color: #FFD700;
+            font-size: 1.2em;
+        }
+        tr:nth-child(even) {
+            background-color: #3a3a69;
+        }
+        tr:hover {
+            background-color: #555;
+            transition: background-color 0.3s;
+        }
+        .guild-banner {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .guild-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #FFD700;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #444;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        a:hover {
+            background-color: #FFD700;
+            color: #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🗺️ Guild Map Control 🗺️</h1>
+    <p>Here are the maps, their status, and the teams competing for control.</p>
+
+    <table>
+        <tr>
+            <th>Map Name</th>
+            <th>Current Hitpoints</th>
+            <th>Team Control</th>
+            <th>Points Awarded (Weekly)</th>
+            <th>Points Awarded on Conquer</th>
+            <th>Point Leading Team</th>
+        </tr>
+
+        <!-- Controlled Maps with Banners -->
+        <tr>
+            <td>Dry Arabia</td>
+            <td>25</td>
+            <td class="guild-name"><img src="images/raven_banner.png" class="guild-banner">Shadow Ravens</td>
+            <td>5</td>
+            <td>5</td>
+            <td>Shadow Ravens</td>
+        </tr>
+        <tr>
+            <td>Lipany</td>
+            <td>25</td>
+            <td class="guild-name"><img src="images/phoenix_banner.png" class="guild-banner">Crimson Phoenixes</td>
+            <td>5</td>
+            <td>5</td>
+            <td>Crimson Phoenixes</td>
+        </tr>
+        <tr>
+            <td>Himeyama</td>
+            <td>25</td>
+            <td class="guild-name"><img src="images/serpent_banner.png" class="guild-banner">Azure Serpents</td>
+            <td>5</td>
+            <td>5</td>
+            <td>Azure Serpents</td>
+        </tr>
+        <tr>
+            <td>Hideout</td>
+            <td>25</td>
+            <td class="guild-name"><img src="images/reaper_banner.png" class="guild-banner">Verdant Reapers</td>
+            <td>5</td>
+            <td>5</td>
+            <td>Verdant Reapers</td>
+        </tr>
+
+        <!-- Neutral Maps -->
+        <tr><td>MegaRandom</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>Prairie</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>Lakeside</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>The Gorge</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>Nagari</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>High View</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>Canal</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>King of the Hill</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>Four Lakes</td><td>20</td><td>Neutral</td><td>4</td><td>4</td><td></td></tr>
+        <tr><td>Continental</td><td>15</td><td>Neutral</td><td>3</td><td>3</td><td></td></tr>
+        <tr><td>Golden Heights</td><td>15</td><td>Neutral</td><td>3</td><td>3</td><td></td></tr>
+        <tr><td>Atacama</td><td>15</td><td>Neutral</td><td>3</td><td>3</td><td></td></tr>
+        <tr><td>Glade</td><td>15</td><td>Neutral</td><td>3</td><td>3</td><td></td></tr>
+        <tr><td>Cliffside</td><td>15</td><td>Neutral</td><td>3</td><td>3</td><td></td></tr>
+        <tr><td>Altai</td><td>10</td><td>Neutral</td><td>2</td><td>2</td><td></td></tr>
+        <tr><td>Hill and Dale</td><td>10</td><td>Neutral</td><td>2</td><td>2</td><td></td></tr>
+        <tr><td>Black Forest</td><td>5</td><td>Neutral</td><td>1</td><td>1</td><td></td></tr>
+        <tr><td>Warring Islands</td><td>5</td><td>Neutral</td><td>1</td><td>1</td><td></td></tr>
+    </table>
+
+    <a href="index.html">Back to Home</a>
+</body>
+</html>

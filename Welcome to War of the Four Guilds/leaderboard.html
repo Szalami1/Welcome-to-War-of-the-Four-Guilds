@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: #d1c4e9;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #2c2c54;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #444;
+            text-align: center;
+        }
+        th {
+            background-color: #444;
+            color: #FFD700;
+            font-size: 1.2em;
+        }
+        tr:nth-child(even) {
+            background-color: #3a3a69;
+        }
+        tr:hover {
+            background-color: #555;
+        }
+        .loading {
+            font-size: 1.5em;
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏆 Guild Leaderboard 🏆</h1>
+    <div id="leaderboard">
+        <p class="loading">Loading leaderboard...</p>
+    </div>
+
+    <script>
+        // Google Sheet CSV URL
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJdIwHTXXuaXNe7SQonhjkRps3NZ_UHV5d-EX8zfBuda8dfVhqGtR3gqY5xhRLdscvW3hf83KrY06Q/pub?output=csv';
+
+        async function fetchLeaderboardData() {
+            try {
+                const response = await fetch(sheetUrl);
+                const data = await response.text();
+
+                // Parse CSV data
+                const rows = data.trim().split('\n').map(row => row.split(','));
+
+                // Extract header and data rows
+                const [header, ...entries] = rows;
+
+                // Create a table
+                let tableHTML = '<table>';
+                tableHTML += '<tr>';
+                header.forEach(col => tableHTML += `<th>${col.trim()}</th>`);
+                tableHTML += '</tr>';
+
+                // Sort entries by Guild Points in descending order (assuming points are in the second column)
+                const sortedEntries = entries.sort((a, b) => parseInt(b[1].trim()) - parseInt(a[1].trim()));
+
+                // Add rows to the table
+                sortedEntries.forEach(entry => {
+                    if (entry[0]) {
+                        tableHTML += '<tr>';
+                        entry.forEach(cell => tableHTML += `<td>${cell.trim()}</td>`);
+                        tableHTML += '</tr>';
+                    }
+                });
+
+                tableHTML += '</table>';
+
+                // Insert the table into the leaderboard div
+                document.getElementById('leaderboard').innerHTML = tableHTML;
+            } catch (error) {
+                console.error('Error fetching leaderboard data:', error);
+                document.getElementById('leaderboard').innerHTML = '<p class="loading">Failed to load leaderboard. Please try again later.</p>';
+            }
+        }
+
+        // Fetch the data when the page loads
+        fetchLeaderboardData();
+    </script>
+</body>
+</html>
